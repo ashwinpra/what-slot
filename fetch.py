@@ -4,11 +4,16 @@ from bs4 import BeautifulSoup
 cookie = os.environ['JSESSIONID']  # 'F8D06B8C66185BE893CC9838BE21E9E1.worker2'
 
 url = 'https://erp.iitkgp.ac.in/Acad/timetable_track.jsp?action=second&dept={}'
+
 headers = {
-	'Cookie' : 'JSESSIONID={}'.format(cookie)
+	'Cookie' : 'JSESSIONID=xxx; \
+	ssoToken=xxx; \
+	JSID#/IIT_ERP3=xxx; \
+	JSID#/ERPAccounts=xxx; \
+	JSID#/Acad=xxx'
 }
 form = {
-	'for_session': '2019-2020',
+	'for_session': '2020-2021',
 	'for_semester': 'SPRING',
 	'dept': '{}'
 }

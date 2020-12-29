@@ -5,20 +5,40 @@
 
      
 Organize your time table for additional courses and minor.
+
 ## Usage
 Currently hosted at [https://whatslot.metakgp.org/](https://whatslot.metakgp.org/)
 
 NOTE: The `master` branch is automatically deployed as an heroku app on the above link.
+
 ## Updating for new semester
-0. Set the environment variable `JSESSIONID` to the cookie of same name by `export JSESSIONID=<session ID>`. The `JSESSIONID` cookie is generated when you visit the academic section in ERP while you are logged in. This can be grabbed from the network requests in your chrome debugger, just open network tab in it and click on academic, then see the request for cookies and copy JSESSIONID.
-0. Update `for_session` and `for_semester` (line no. 10 and 11) in `fetch.py`.
-0. Run `JSESSIONID=[JSESSIONID TAKEN FROM CHROME] python3 fetch.py`, and if all went well you should see a list of subjects being fetched for each department (please install dependencies before this step from requirements.txt or Pipenv). Note that no square brackets should be there in the actual command around JSESSION grabbed from chrome.
-0. After script has finished executing, the app is ready to be deployed once again for the new semester.
+* Set the environment variable `JSESSIONID` to the cookie of same name by `export JSESSIONID=<session ID>`. The `JSESSIONID` cookie is generated when you visit the academic section in ERP while you are logged in. This can be grabbed from the network requests in your chrome debugger, just open network tab in it and click on academic, then see the request for cookies and copy JSESSIONID.
+
+* Replace the data that have been marked as `xxx` in the headers (as shown below) in the `fetch.py` file by the data that have been grabbed from the cookies as described above for the JSESSIONID.
+```python
+headers = {
+	'Cookie' : 'JSESSIONID=xxx; \
+	ssoToken=xxx; \
+	JSID#/IIT_ERP3=xxx; \
+	JSID#/ERPAccounts=xxx; \
+	JSID#/Acad=xxx'
+}
+```
+
+* `NOTE:` If you are using some cookie handler or chrome extensions for the cookie you will directly get this cookie data from there
+
+* Update `for_session` and `for_semester` (line no. 16 and 17) with the updated details, in `fetch.py`.
+
+* Run `JSESSIONID=[JSESSIONID TAKEN FROM CHROME] python3 fetch.py`, and if all went well you should see a list of subjects being fetched for each department (please install dependencies before this step from requirements.txt or Pipenv). Note that no square brackets should be there in the actual command around JSESSION grabbed from chrome.
+
+* After script has finished executing, the app is ready to be deployed once again for the new semester.
+
 ## Runnning locally
-1. `git clone https://github.com/arnav-t/what-slot.git`
+1. `git clone https://github.com/metakgp/what-slot.git`
 2. `cd what-slot`
 3. `pipenv shell --three`
 4. `pipenv install` (Only the first time)
 5. `python3 app.py`
+
 ## Communication
 [Gitter](https://gitter.im/WhatSlotChat/Lobby)
