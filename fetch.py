@@ -5,6 +5,7 @@ cookie = os.environ['JSESSIONID']  # 'F8D06B8C66185BE893CC9838BE21E9E1.worker2'
 
 url = 'https://erp.iitkgp.ac.in/Acad/timetable_track.jsp?action=second&dept={}'
 
+
 headers = {
 	'Cookie' : 'JSESSIONID=xxx; \
 	ssoToken=xxx; \
@@ -13,7 +14,7 @@ headers = {
 	JSID#/Acad=xxx'
 }
 form = {
-	'for_session': '2020-2021',
+	'for_session': '2022-2023',
 	'for_semester': 'SPRING',
 	'dept': '{}'
 }
