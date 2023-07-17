@@ -154,7 +154,7 @@ function readICS() {
         var reader = new FileReader();
         reader.onload = function(e) {
             var content = e.target.result;
-            var slots = content.split('DTSTART;TZID=Asia/Kolkata;VALUE=DATE-TIME:');
+            var slots = content.split('DTSTART;TZID=Asia/Kolkata:');
             for (i in slots) {
                 var slot = slots[i];
                 if (i > 0) {
