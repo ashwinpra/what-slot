@@ -14,8 +14,8 @@ headers = {
 	JSID#/Acad=xxx'
 }
 form = {
-	'for_session': '2022-2023',
-	'for_semester': 'SPRING',
+	'for_session': '2023-2024',
+	'for_semester': 'AUTUMN',
 	'dept': '{}'
 }
 dataFileName = 'courses.json'
@@ -58,6 +58,10 @@ def getData(dep):
 			courses.append(course)
 		except:
 			print('XXXXXXXXXX')
+
+	# temp fix for first course repeating
+	if len(courses)>1:
+		courses = courses[1:]
 
 	return courses
 
